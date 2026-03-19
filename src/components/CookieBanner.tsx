@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+declare function gtag(...args: unknown[]): void;
+
 interface CookieConsent {
   essential: boolean;
   analytics: boolean;
@@ -20,16 +22,36 @@ const CookieBanner: React.FC = () => {
 
   useEffect(() => {
     const savedConsent = localStorage.getItem('cookieConsent');
+    let timer: ReturnType<typeof setTimeout> | null = null;
     if (!savedConsent) {
-      const timer = setTimeout(() => setShowBanner(true), 1000);
-      return () => clearTimeout(timer);
+      timer = setTimeout(() => setShowBanner(true), 1000);
     } else {
-      setConsent(JSON.parse(savedConsent));
+      const parsed: CookieConsent = JSON.parse(savedConsent);
+      setConsent(parsed);
+      // Gespeicherten Consent sofort an GA weitergeben
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          analytics_storage: parsed.analytics ? 'granted' : 'denied',
+          ad_storage: parsed.marketing ? 'granted' : 'denied',
+          ad_user_data: parsed.marketing ? 'granted' : 'denied',
+          ad_personalization: parsed.marketing ? 'granted' : 'denied',
+        });
+        if (parsed.analytics) {
+          gtag('event', 'page_view');
+        }
+      }
     }
 
-    const handleOpenSettings = () => setShowModal(true);
+    const handleOpenSettings = () => {
+      setShowBanner(false);
+      setShowModal(true);
+    };
     window.addEventListener('openCookieSettings', handleOpenSettings);
-    return () => window.removeEventListener('openCookieSettings', handleOpenSettings);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener('openCookieSettings', handleOpenSettings);
+    };
   }, []);
 
   const saveConsent = (newConsent: CookieConsent) => {
@@ -37,6 +59,19 @@ const CookieBanner: React.FC = () => {
     setConsent(newConsent);
     setShowBanner(false);
     setShowModal(false);
+
+    // Google Consent Mode v2 aktualisieren
+    if (typeof gtag !== 'undefined') {
+      gtag('consent', 'update', {
+        analytics_storage: newConsent.analytics ? 'granted' : 'denied',
+        ad_storage: newConsent.marketing ? 'granted' : 'denied',
+        ad_user_data: newConsent.marketing ? 'granted' : 'denied',
+        ad_personalization: newConsent.marketing ? 'granted' : 'denied',
+      });
+      if (newConsent.analytics) {
+        gtag('event', 'page_view');
+      }
+    }
   };
 
   const handleAcceptAll = () => {

@@ -10,6 +10,24 @@
     <meta name="theme-color" content="#0f1f3d" />
     <meta name="msapplication-TileColor" content="#0f1f3d" />
 
+    <!-- ─── Google Analytics 4 – Consent Mode v2 ─── -->
+    <!-- TODO: G-XXXXXXXXXX durch deine echte Measurement ID ersetzen -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      // Consent Mode v2: alles standardmäßig verweigert (DSGVO-konform)
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', { send_page_view: false });
+    </script>
+
     <!-- ─── Preconnect für schnelles Laden ─── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
