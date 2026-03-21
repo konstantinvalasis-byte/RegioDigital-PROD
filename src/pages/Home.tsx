@@ -79,7 +79,7 @@ function BrowserFrame({ children }: { children: ReactNode }) {
 
 // ─── Main Component ──────────────────────────────────────
 const Home: React.FC = () => {
-  const [formState, setFormState] = useState({ name: '', branche: '', telefon: '' });
+  const [formState, setFormState] = useState({ name: '', branche: '', telefon: '', nachricht: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
       const data = await response.json();
       if (response.ok) {
         setSubmitMessage({ type: 'success', text: data.message || 'Ihre Anfrage wurde erfolgreich gesendet!' });
-        setFormState({ name: '', branche: '', telefon: '' });
+        setFormState({ name: '', branche: '', telefon: '', nachricht: '' });
       } else {
         setSubmitMessage({ type: 'error', text: data.error || 'Es gab ein Problem beim Senden.' });
       }
@@ -156,8 +156,8 @@ const Home: React.FC = () => {
         {/* Background image – LCP-Element: eager laden, hohe Priorität */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            src="/stuttgart-hero.jpg"
+            alt="Stuttgart Stadtpanorama"
             className="w-full h-full object-cover object-center"
             loading="eager"
             fetchPriority="high"
@@ -733,6 +733,19 @@ const Home: React.FC = () => {
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 outline-none transition-all text-sm"
                       placeholder="Für einen Rückruf"
                       required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="nachricht" className="block text-sm font-medium text-slate-700 mb-1.5">
+                      Nachricht <span className="text-slate-400 font-normal">(optional)</span>
+                    </label>
+                    <textarea
+                      id="nachricht"
+                      value={formState.nachricht}
+                      onChange={(e) => setFormState({ ...formState, nachricht: e.target.value })}
+                      rows={3}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 outline-none transition-all text-sm resize-none"
+                      placeholder="Was kann ich für Sie tun? Z.B. neue Website, Redesign, lokales SEO..."
                     />
                   </div>
                   <button

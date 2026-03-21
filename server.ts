@@ -16,7 +16,7 @@ async function startServer() {
 
   // API Route for the contact form
   app.post('/api/contact', async (req, res) => {
-    const { name, branche, telefon } = req.body;
+    const { name, branche, telefon, nachricht } = req.body;
 
     if (!name || !branche || !telefon) {
       return res.status(400).json({ error: 'Bitte füllen Sie alle Pflichtfelder aus.' });
@@ -30,6 +30,7 @@ async function startServer() {
         console.log(`Name: ${name}`);
         console.log(`Branche: ${branche}`);
         console.log(`Telefon: ${telefon}`);
+        if (nachricht) console.log(`Nachricht: ${nachricht}`);
         console.log('-----------------------------');
         
         // Return success for the preview environment even if not configured yet
@@ -55,7 +56,7 @@ async function startServer() {
         from: `"Valasis Digital Website" <${process.env.SMTP_USER}>`,
         to: 'hallo@valasis-digital.de', // The destination email address
         subject: `Neue Beratungsanfrage: ${name}`,
-        text: `Hallo Valasis Digital-Team,\n\nEs gibt eine neue Beratungsanfrage über die Website:\n\nName / Unternehmen: ${name}\nBranche: ${branche}\nTelefonnummer: ${telefon}\n\nViele Grüße,\nIhr Website-System`,
+        text: `Hallo Valasis Digital-Team,\n\nEs gibt eine neue Beratungsanfrage über die Website:\n\nName / Unternehmen: ${name}\nBranche: ${branche}\nTelefonnummer: ${telefon}${nachricht ? `\nNachricht: ${nachricht}` : ''}\n\nViele Grüße,\nIhr Website-System`,
         html: `
           <h3>Neue Beratungsanfrage</h3>
           <p>Es gibt eine neue Beratungsanfrage über die Website:</p>
@@ -63,6 +64,7 @@ async function startServer() {
             <li><strong>Name / Unternehmen:</strong> ${name}</li>
             <li><strong>Branche:</strong> ${branche}</li>
             <li><strong>Telefonnummer:</strong> ${telefon}</li>
+            ${nachricht ? `<li><strong>Nachricht:</strong> ${nachricht}</li>` : ''}
           </ul>
           <p>Viele Grüße,<br>Ihr Website-System</p>
         `

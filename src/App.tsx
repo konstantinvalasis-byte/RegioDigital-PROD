@@ -6,6 +6,7 @@ import CookieBanner from './components/CookieBanner';
 import Home from './pages/Home';
 import Impressum from './pages/Impressum';
 import Datenschutz from './pages/Datenschutz';
+import NotFound from './pages/NotFound';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -36,6 +37,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
