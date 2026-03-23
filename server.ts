@@ -16,7 +16,12 @@ async function startServer() {
 
   // API Route for the contact form
   app.post('/api/contact', async (req, res) => {
-    const { name, branche, telefon, nachricht } = req.body;
+    const { name, branche, telefon, nachricht, website } = req.body;
+
+    // Honeypot: Bot hat das versteckte Feld ausgefüllt → still ignorieren
+    if (website) {
+      return res.json({ success: true, message: 'Ihre Anfrage wurde erfolgreich gesendet!' });
+    }
 
     if (!name || !branche || !telefon) {
       return res.status(400).json({ error: 'Bitte füllen Sie alle Pflichtfelder aus.' });
@@ -86,7 +91,16 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     // In production, serve the static files from the dist folder
-    app.use(express.static(path.join(__dirname, 'dist')));
+    // Immutable Cache für gehashte Assets (JS/CSS), 1 Tag für alles andere
+    app.use(express.static(path.join(__dirname, 'dist'), {
+      setHeaders(res, filePath) {
+        if (/\/assets\//.test(filePath)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else {
+          res.setHeader('Cache-Control', 'public, max-age=86400');
+        }
+      },
+    }));
   }
 
   app.listen(PORT, '0.0.0.0', () => {
