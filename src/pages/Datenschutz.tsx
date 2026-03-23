@@ -4,6 +4,10 @@ const Datenschutz: React.FC = () => {
   return (
     <main className="py-20 px-6 md:px-12 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-navy-900 transition-colors mb-8 group">
+          <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          Zurück zur Startseite
+        </a>
         <h1 className="text-3xl md:text-4xl font-bold text-navy-900 mb-2">Datenschutzerklärung</h1>
         <p className="text-sm text-gray-400 mb-10">Stand: März 2026</p>
 
@@ -333,31 +337,11 @@ const Datenschutz: React.FC = () => {
         <section>
           <h2 className="text-xl font-bold text-navy-900 mb-4">5. Plugins und Tools</h2>
 
-          <h3 className="text-base font-semibold text-navy-900 mb-2">
-            Google Fonts (lokales Hosting)
-          </h3>
+          <h3 className="text-base font-semibold text-navy-900 mb-2">Schriftarten</h3>
           <p className="text-gray-600 leading-relaxed">
-            Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten Google Fonts. Google
-            Fonts sind lokal installiert, d.&nbsp;h. es findet keine Verbindung zu Servern von
-            Google statt. Weitere Informationen zu Google Fonts finden Sie unter{' '}
-            <a
-              href="https://developers.google.com/fonts/faq"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-petrol-600 hover:underline"
-            >
-              https://developers.google.com/fonts/faq
-            </a>{' '}
-            und in der Datenschutzerklärung von Google:{' '}
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-petrol-600 hover:underline"
-            >
-              https://policies.google.com/privacy
-            </a>
-            .
+            Diese Website verwendet ausschließlich systemseitige Schriftarten. Es werden keine
+            externen Schriftarten-Dienste (z.&nbsp;B. Google Fonts) eingebunden. Es findet daher
+            keine Verbindung zu externen Servern für Schriftarten statt.
           </p>
         </section>
       </div>

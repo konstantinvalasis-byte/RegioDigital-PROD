@@ -4,6 +4,10 @@ const Impressum: React.FC = () => {
   return (
     <main className="py-20 px-6 md:px-12 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-navy-900 transition-colors mb-8 group">
+          <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          Zurück zur Startseite
+        </a>
         <h1 className="text-3xl md:text-4xl font-bold text-navy-900 mb-8">Impressum</h1>
 
         <section className="mb-8">

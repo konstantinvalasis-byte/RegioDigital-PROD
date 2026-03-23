@@ -5,6 +5,22 @@ import { motion, AnimatePresence } from 'motion/react';
 
 declare function gtag(...args: unknown[]): void;
 
+// GA-Messung-ID – hier echte ID eintragen sobald verfügbar
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+function loadGoogleAnalytics() {
+  if (document.getElementById('ga-script')) return;
+  const script = document.createElement('script');
+  script.id = 'ga-script';
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+  script.onload = () => {
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID, { send_page_view: true });
+  };
+}
+
 interface CookieConsent {
   essential: boolean;
   analytics: boolean;
@@ -36,9 +52,9 @@ const CookieBanner: React.FC = () => {
           ad_user_data: parsed.marketing ? 'granted' : 'denied',
           ad_personalization: parsed.marketing ? 'granted' : 'denied',
         });
-        if (parsed.analytics) {
-          gtag('event', 'page_view');
-        }
+      }
+      if (parsed.analytics) {
+        loadGoogleAnalytics();
       }
     }
 
@@ -68,9 +84,9 @@ const CookieBanner: React.FC = () => {
         ad_user_data: newConsent.marketing ? 'granted' : 'denied',
         ad_personalization: newConsent.marketing ? 'granted' : 'denied',
       });
-      if (newConsent.analytics) {
-        gtag('event', 'page_view');
-      }
+    }
+    if (newConsent.analytics) {
+      loadGoogleAnalytics();
     }
   };
 

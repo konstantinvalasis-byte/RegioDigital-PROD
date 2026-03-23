@@ -10,44 +10,17 @@
     <meta name="theme-color" content="#0f1f3d" />
     <meta name="msapplication-TileColor" content="#0f1f3d" />
 
-    <!-- ─── Google Analytics 4 – Consent Mode v2 ─── -->
-    <!-- TODO: G-XXXXXXXXXX durch deine echte Measurement ID ersetzen -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- ─── Google Analytics 4 – wird ausschließlich nach Cookie-Einwilligung geladen ─── -->
+    <!-- GA wird dynamisch durch CookieBanner.tsx initialisiert (DSGVO-konform) -->
+    <!-- TODO: G-XXXXXXXXXX in CookieBanner.tsx durch echte Measurement ID ersetzen -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      // Consent Mode v2: alles standardmäßig verweigert (DSGVO-konform)
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        wait_for_update: 500
-      });
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', { send_page_view: false });
     </script>
-
-    <!-- ─── Preconnect für schnelles Laden ─── -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="dns-prefetch" href="https://images.unsplash.com" />
-
-    <!-- ─── Google Fonts – display=swap für bessere LCP ─── -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
-    </noscript>
 
     <!-- ─── Primäre SEO ─── -->
     <title>Webdesign Stuttgart | Professionelle Homepages für Handwerk, Ärzte & Gastro</title>
-    <meta name="description" content="Professionelles Webdesign aus Stuttgart. Maßgeschneiderte, rechtssichere und SEO-optimierte Homepages für Handwerker, Arztpraxen, Gastronomie und Dienstleister. Festpreise ab 690 €." />
+    <meta name="description" content="Professionelles Webdesign aus Stuttgart. Maßgeschneiderte, rechtssichere und SEO-optimierte Homepages für Handwerker, Arztpraxen, Gastronomie und Dienstleister. Festpreise ab 490 €." />
     <meta name="keywords" content="Webdesign Stuttgart, Homepage erstellen Stuttgart, Website Handwerker, Website Arztpraxis, Website Restaurant, Local SEO Stuttgart, Webdesign Festpreis" />
     <meta name="author" content="RegioDigital" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -58,7 +31,7 @@
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="RegioDigital" />
     <meta property="og:title" content="Webdesign Stuttgart | Professionelle Homepages für Handwerk, Ärzte & Gastro" />
-    <meta property="og:description" content="Professionelles Webdesign aus Stuttgart. Maßgeschneiderte, rechtssichere und SEO-optimierte Homepages für Handwerker, Arztpraxen, Gastronomie und Dienstleister. Festpreise ab 690 €." />
+    <meta property="og:description" content="Professionelles Webdesign aus Stuttgart. Maßgeschneiderte, rechtssichere und SEO-optimierte Homepages für Handwerker, Arztpraxen, Gastronomie und Dienstleister. Festpreise ab 490 €." />
     <meta property="og:url" content="https://www.regio-digital.de/" />
     <meta property="og:image" content="https://www.regio-digital.de/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -68,7 +41,7 @@
     <!-- ─── Twitter / X Card ─── -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Webdesign Stuttgart | Professionelle Homepages für Handwerk, Ärzte & Gastro" />
-    <meta name="twitter:description" content="Maßgeschneiderte, rechtssichere und SEO-optimierte Homepages. Festpreise ab 690 €." />
+    <meta name="twitter:description" content="Maßgeschneiderte, rechtssichere und SEO-optimierte Homepages. Festpreise ab 490 €." />
     <meta name="twitter:image" content="https://www.regio-digital.de/og-image.jpg" />
     <meta name="twitter:image:alt" content="RegioDigital – Professionelles Webdesign aus Stuttgart" />
 
@@ -83,7 +56,6 @@
           "name": "RegioDigital",
           "description": "Professionelle Webdesign-Agentur für lokale Unternehmen in Stuttgart und der Region. Spezialisiert auf Handwerk, Arztpraxen, Gastronomie und Dienstleister.",
           "url": "https://www.regio-digital.de",
-          "telephone": "+4901345554445",
           "email": "hallo@regio-digital.de",
           "address": {
             "@type": "PostalAddress",
@@ -118,23 +90,23 @@
             "itemListElement": [
               {
                 "@type": "Offer",
-                "name": "Starter-Paket",
-                "description": "Kompakt-Konzept für Gründer – bis zu 3 Unterseiten, Responsive Design, Basis-SEO",
-                "price": "690",
+                "name": "Kompakt-Lösung",
+                "description": "Klares & funktionales Design, mobil optimiert, E-Mail-Verlinkung & Google Maps, Basis-SEO",
+                "price": "490",
                 "priceCurrency": "EUR"
               },
               {
                 "@type": "Offer",
-                "name": "Business-Paket",
-                "description": "Komplett-Lösung – bis zu 8 Unterseiten, individuelles Design, SEO-optimierte Texte, Buchungssystem",
-                "price": "1190",
+                "name": "Business-Präsenz",
+                "description": "Branchenspezifisches Design, SEO-optimierte Texte, strukturiertes Kontaktformular, 5–7 Fachunterseiten",
+                "price": "990",
                 "priceCurrency": "EUR"
               },
               {
                 "@type": "Offer",
-                "name": "Premium-Paket",
-                "description": "Wachstums-Paket – unbegrenzte Seiten, Premium-Design, Fotoshooting, Blog-System",
-                "price": "1990",
+                "name": "Full-Service Lösung",
+                "description": "Exklusives High-End Design, CMS & Blog, digitale Terminbuchung, Conversion-Optimierung",
+                "price": "1890",
                 "priceCurrency": "EUR"
               }
             ]
@@ -160,7 +132,7 @@
               "name": "Wie setzen sich Ihre Kosten zusammen?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Wir bieten transparente Festpreise für unsere Webdesign-Pakete an. Eine professionelle Basis-Website startet ab 690 € (zzgl. MwSt.). In diesem Preis ist die komplette Erstellung und Einrichtung enthalten – es gibt keine versteckten Entwicklungskosten."
+                "text": "Wir bieten transparente Festpreise für unsere Webdesign-Pakete an. Eine professionelle Basis-Website startet ab 490 €. In diesem Preis ist die komplette Erstellung und Einrichtung enthalten – es gibt keine versteckten Entwicklungskosten."
               }
             },
             {
@@ -173,18 +145,10 @@
             },
             {
               "@type": "Question",
-              "name": "Was beinhaltet Ihr Digitaler Hausmeister-Service?",
+              "name": "Was beinhaltet Ihr Wartungspaket?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Unser monatliches Paket für 39 € beinhaltet: wöchentliche Sicherheitsupdates, tägliche Datensicherung, automatische DSGVO-Aktualisierungen und einen persönlichen Ansprechpartner in Stuttgart."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Welche Rolle spielt KI in Ihrem Prozess?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Wir nutzen modernste KI-Technologie als Effizienz-Turbo. Was klassische Agenturen Tage kostet, erledigen wir mit KI-Unterstützung in Stunden. Das spart Zeit und ermöglicht unsere günstigen Festpreise."
+                "text": "Unser monatliches Wartungspaket beinhaltet: wöchentliche Sicherheitsupdates, tägliche Datensicherung, DSGVO-Aktualisierungen und einen persönlichen Ansprechpartner in Stuttgart."
               }
             }
           ]

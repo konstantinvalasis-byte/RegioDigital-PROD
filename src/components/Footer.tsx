@@ -22,8 +22,6 @@ const Footer: React.FC = () => {
           <p className="text-slate-300 font-medium">Professionelles Webdesign aus Stuttgart.</p>
           <p className="mt-1 text-xs">Für Handwerker, Ärzte, Gastronomie und Dienstleister.</p>
           <p className="mt-1 text-xs">
-            <a href="tel:+4901345554445" className="hover:text-gold-500 transition-colors">0134 5554445</a>
-            {' · '}
             <a href="mailto:hallo@regio-digital.de" className="hover:text-gold-500 transition-colors">hallo@regio-digital.de</a>
           </p>
           <p className="mt-1 text-xs">© {currentYear} RegioDigital. Alle Rechte vorbehalten.</p>
